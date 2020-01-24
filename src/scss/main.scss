@@ -12,8 +12,40 @@ a {
     color: $color_black;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+        font-weight: 700;
+    }
+    th, td {
+        border: 1px solid $color_black;
+        padding: 5px 10px;
+    }
+}
+
 h1 {
     font-size: 30px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.row {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 .header--container {
