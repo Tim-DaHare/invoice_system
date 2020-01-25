@@ -45,7 +45,12 @@ const InvoiceForm = ({ onSubmit, initialValues = null }) => {
                     </div>
                     <div className="form-group">
                         <strong>Betreffent vee</strong><br />
-                        <Field name="rows" component={InvoiceRowsBuilder} invoiceFlavour={values.invoice_flavour} />
+                        <Field 
+                            name="rows" 
+                            component={InvoiceRowsBuilder} 
+                            invoiceFlavour={values.invoice_flavour} 
+                            // initialValue={[{}, {}]} 
+                        />
                     </div>
                 </form>
             )}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import InvoiceForm from "../../forms/invoice_form"
 
 const onSubmit = values => {
-    console.log(values)
+    console.log("submit", values)
 }
 
 const CreateInvoicePage = () => {
