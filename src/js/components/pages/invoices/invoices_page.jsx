@@ -63,7 +63,7 @@ const InvoicesPage = ({ invoices, updateInvoices }) => {
                                 {invoice.invoice_type === 3 && "Vrije invoer"}
                             </td>
                             <td>
-                                <button type="button">Downloaden</button>
+                                <a href="http://localhost:8000/invoices/pdf/1">Downloaden</a>
                             </td>
                         </tr>
                     ))}
