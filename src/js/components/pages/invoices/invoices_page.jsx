@@ -1,7 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import { Link } from "react-router-dom"
+import { updateInvoices } from "../../../actions/app_actions"
 
-const InvoicesPage = () => {
+const InvoicesPage = ({ invoices, updateInvoices }) => {
+
+    useEffect(() => {
+        updateInvoices()
+    }, [])
 
     return (
         <React.Fragment>
@@ -18,29 +24,61 @@ const InvoicesPage = () => {
                             Klantnaam
                         </th>
                         <th>
-                            Datum
+                            Notanummer
                         </th>
                         <th>
-                            Totaalbedrag
+                            Type nota
+                        </th>
+                        <th>
+                            BTW
+                        </th>
+                        <th>
+                            Inhoud
+                        </th>
+                        <th>
+                            PDF
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="invoice-listitem--table-row">
-                        <td>
-                            <Link to="invoices/edit/1">VOF Spaarman</Link>
-                        </td>
-                        <td>
-                            24 Januari 2020
-                        </td>
-                        <td>
-                            € 650,00
-                        </td>
-                    </tr>
+                    {invoices.map((invoice, i) => (
+                        <tr className="invoice-listitem--table-row" key={i}>
+                            <td>
+                                <Link to={`invoices/edit/${invoice.customer_id}`}>VOF Spaarman</Link>
+                            </td>
+                            <td>
+                                {invoice.delivery_date}
+                            </td>
+                            <td>
+                                {invoice.invoice_type === 0 && "Inkoop"}
+                                {invoice.invoice_type === 1 && "Verkoop"}
+                            </td>
+                            <td>
+                                {invoice.btw_percentage}%
+                            </td>
+                            <td>
+                                {invoice.invoice_type === 0 && "Kalveren"}
+                                {invoice.invoice_type === 1 && "Runderen"}
+                                {invoice.invoice_type === 2 && "Wolvee"}
+                                {invoice.invoice_type === 3 && "Vrije invoer"}
+                            </td>
+                            <td>
+                                <button type="button">Downloaden</button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </React.Fragment>
     )
 }
 
-export default InvoicesPage
+const mapStateToProps = state => ({
+    invoices: state.app.invoices
+})
+
+const mapDispatchToProps = dispatch => ({
+    updateInvoices: () => dispatch(updateInvoices())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(InvoicesPage)

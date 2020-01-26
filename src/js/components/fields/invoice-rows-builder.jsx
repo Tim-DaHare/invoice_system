@@ -21,7 +21,6 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
     }
 
     const updateValues = values => {
-        console.log("hallo?")
         input.onChange(values)
         setValues(values)
         if (onChange) onChange() 
@@ -32,12 +31,12 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
             <table className="invoice-rows-builder__table">
                 <thead>
                     <tr>
-                        {invoiceFlavour != 1 &&
+                        {invoiceFlavour !== 1 &&
                         <th>
                             Omschrijving
                         </th>
                         }
-                        {invoiceFlavour == 1 &&
+                        {invoiceFlavour === 1 &&
                         <React.Fragment>
                             <th>
                                 I & R Oormerk
@@ -53,13 +52,13 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                             </th>
                         </React.Fragment>
                         }
-                        {invoiceFlavour != 3 &&
+                        {invoiceFlavour !== 3 &&
                         <th>
                             Aantal
                         </th>
                         }
                     
-                        {invoiceFlavour == 0 &&
+                        {invoiceFlavour === 0 &&
                         <th>
                             Werknummer
                         </th>
@@ -76,7 +75,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                     {values.map((value, i) => {
                         return (
                             <tr className="invoice-listitem--table-row" key={i}>
-                                {invoiceFlavour != 1 &&
+                                {invoiceFlavour !== 1 &&
                                     <td>
                                         <input 
                                             name="rows[]['description']" 
@@ -88,7 +87,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         />
                                     </td>
                                 }
-                                {invoiceFlavour == 1 &&
+                                {invoiceFlavour === 1 &&
                                     <React.Fragment>
                                         <td>
                                             <input 
@@ -132,7 +131,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         </td>
                                     </React.Fragment>
                                 }
-                                {invoiceFlavour != 3 &&
+                                {invoiceFlavour !== 3 &&
                                     <td>
                                         <input 
                                             name="rows[]['amount']" 
@@ -144,7 +143,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         />
                                     </td>
                                 }
-                                {invoiceFlavour == 0 &&
+                                {invoiceFlavour === 0 &&
                                     <td>
                                         <input 
                                             name="rows[]['work_number']" 

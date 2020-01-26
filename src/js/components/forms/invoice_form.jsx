@@ -11,16 +11,21 @@ const InvoiceForm = ({ onSubmit, initialValues = null }) => {
             render={({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <p><strong>Nota: </strong>19K0011</p>
+                        <Field 
+                            name="invoice_number" 
+                            component="input" 
+                            type="text" 
+                            initialValue="19K0011"
+                        />
                     </div>
                     <div className="form-group">
                         <strong>Klant</strong><br />
-                        <Field name="customer_id" component="select">
-                            <option>Cono</option>
+                        <Field name="customer_id" component="select" defaultValue="1">
+                            <option value="1">Jan Dijkman bv</option>
                         </Field>
                     </div>
                     <div className="form-group">
-                        <strong>Klant</strong><br />
+                        <strong>Nota Type</strong><br />
                         <Field name="invoice_type" component="select" defaultValue="0">
                             <option value={0}>Inkoopnota</option>
                             <option value={1}>Verkoopnota</option>
@@ -44,13 +49,30 @@ const InvoiceForm = ({ onSubmit, initialValues = null }) => {
                         </Field>
                     </div>
                     <div className="form-group">
-                        <strong>Betreffent vee</strong><br />
+                        <strong>Leverdatum</strong><br />
+                        <Field name="delivery_date" component="input" type="date" initialValue="2020-01-26"/>
+                    </div>
+                    {parseInt(values.invoice_flavour) === 1 &&
+                        <div className="form-group">
+                            <strong>UBN nummer</strong><br />
+                            <Field 
+                                name="invoice_number" 
+                                component="input" 
+                                type="text"
+                            />
+                        </div>
+                    }
+                    <div className="form-group">
+                        <strong>Inhoud</strong><br />
                         <Field 
-                            name="rows" 
+                            name="invoice_rows" 
                             component={InvoiceRowsBuilder} 
-                            invoiceFlavour={values.invoice_flavour} 
+                            invoiceFlavour={parseInt(values.invoice_flavour)} 
                             // initialValue={[{}, {}]} 
                         />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit">Opslaan</button>
                     </div>
                 </form>
             )}
