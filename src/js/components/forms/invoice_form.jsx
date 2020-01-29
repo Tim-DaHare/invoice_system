@@ -56,7 +56,7 @@ const InvoiceForm = ({ onSubmit, initialValues = null }) => {
                         <div className="form-group">
                             <strong>UBN nummer</strong><br />
                             <Field 
-                                name="invoice_number" 
+                                name="ubn_number" 
                                 component="input" 
                                 type="text"
                             />

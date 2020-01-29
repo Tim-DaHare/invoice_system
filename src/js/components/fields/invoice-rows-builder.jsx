@@ -52,7 +52,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                             </th>
                         </React.Fragment>
                         }
-                        {invoiceFlavour !== 3 &&
+                        {(invoiceFlavour === 0 || invoiceFlavour === 2) &&
                         <th>
                             Aantal
                         </th>
@@ -78,7 +78,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                 {invoiceFlavour !== 1 &&
                                     <td>
                                         <input 
-                                            name="rows[]['description']" 
+                                            // name="rows[]['description']" 
                                             required
                                             type="text" 
                                             placeholder="Omschrijving" 
@@ -88,10 +88,10 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                     </td>
                                 }
                                 {invoiceFlavour === 1 &&
-                                    <React.Fragment>
+                                    <>
                                         <td>
                                             <input 
-                                                name="rows[]['earbrand']" 
+                                                // name="rows[]['earbrand']" 
                                                 required
                                                 type="text" 
                                                 placeholder="I & R Oormerk" 
@@ -101,7 +101,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         </td>
                                         <td>
                                             <input 
-                                                name="rows[]['weight_kg']" 
+                                                // name="rows[]['weight_kg']" 
                                                 required
                                                 type="number" 
                                                 placeholder="Gewicht in kg" 
@@ -111,7 +111,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         </td>
                                         <td>
                                             <input 
-                                                name="rows[]['price_kg']" 
+                                                // name="rows[]['price_kg']" 
                                                 required
                                                 type="number" 
                                                 placeholder="Prijs per kg." 
@@ -121,7 +121,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                         </td>
                                         <td>
                                             <input 
-                                                name="rows[]['costs']" 
+                                                // name="rows[]['costs']" 
                                                 required
                                                 type="number" 
                                                 placeholder="Kosten" 
@@ -129,12 +129,12 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                                 onChange={e => setValue(i, "costs", e.target.value)} 
                                             />
                                         </td>
-                                    </React.Fragment>
+                                    </>
                                 }
-                                {invoiceFlavour !== 3 &&
+                                {(invoiceFlavour === 0 || invoiceFlavour === 2) &&
                                     <td>
                                         <input 
-                                            name="rows[]['amount']" 
+                                            // name="rows[]['amount']" 
                                             required
                                             type="number" 
                                             placeholder="Aantal" 
@@ -146,7 +146,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                 {invoiceFlavour === 0 &&
                                     <td>
                                         <input 
-                                            name="rows[]['work_number']" 
+                                            // name="rows[]['work_number']" 
                                             required
                                             type="text" 
                                             placeholder="Werknummer" 
@@ -157,7 +157,7 @@ const InvoiceRowsBuilder = ({ invoiceFlavour, onChange, input }) => {
                                 }
                                 <td>
                                     <input 
-                                        name="rows[]['price']" 
+                                        // name="rows[]['price']" 
                                         required
                                         type="number" 
                                         placeholder="Bedrag" 
