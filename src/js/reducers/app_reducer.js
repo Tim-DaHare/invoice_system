@@ -1,5 +1,6 @@
 const initialState = {
-    invoices: []
+    invoices: [],
+    customers: []
 }
 
 const app = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const app = (state = initialState, action) => {
         return {
             ...state,
             invoices: action.invoices
+        }
+    case "UPDATE_CUSTOMERS":
+        return {
+            ...state,
+            customers: action.customers
         }
     default:
         return state

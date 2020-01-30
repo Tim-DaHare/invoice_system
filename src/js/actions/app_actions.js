@@ -1,14 +1,23 @@
 import { getRequest, postRequest } from "../helpers/api_helper"
 
-export const createInvoice = values => async () => {
+export const initializeAppState = () => dispatch => {
+    dispatch(updateInvoices())
+    dispatch(updateCustomers())
+}
+
+export const createInvoice = values => async dispatch => {
     const result = await postRequest("/invoices/new", values)
-    console.log(result)
+
     if (result.status !== "success") {
         console.warn("creating invoice failed")
         return false
     }
     
-    // console.log("post request sent")
+    dispatch(updateCustomers)
+}
+
+export const createCustomer = values => async dispatch => {
+
 }
 
 export const updateInvoices = () => async dispatch => {
@@ -17,5 +26,14 @@ export const updateInvoices = () => async dispatch => {
     dispatch({
         type: "UPDATE_INVOICES",
         invoices: response
+    })
+}
+
+export const updateCustomers = () => async dispatch => {
+    const response = await getRequest("/customers")
+
+    dispatch({
+        type: "UPDATE_CUSTOMERS",
+        customers: response
     })
 }

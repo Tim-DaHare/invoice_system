@@ -14,7 +14,7 @@ const createWindow = () => {
     // Todo: only load extensions for prod
     // console.log(process.env.NODE_ENV)
     // if (__DEV__) {
-    // BrowserWindow.addDevToolsExtension("C:\\Users\\Tim de Haas\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\2.17.0_0")
+    BrowserWindow.addDevToolsExtension("C:\\Users\\Tim de Haas\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\2.17.0_0")
     // }
 
     // Todo: prod condition loadfile index.html
