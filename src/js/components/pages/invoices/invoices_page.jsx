@@ -33,9 +33,6 @@ const InvoicesPage = ({ invoices }) => {
                                 BTW
                             </th>
                             <th>
-                                Inhoud
-                            </th>
-                            <th>
                                 PDF
                             </th>
                         </tr>
@@ -55,12 +52,6 @@ const InvoicesPage = ({ invoices }) => {
                                 </td>
                                 <td>
                                     {invoice.btw_percentage}%
-                                </td>
-                                <td>
-                                    {invoice.invoice_flavour === 0 && "Kalveren"}
-                                    {invoice.invoice_flavour === 1 && "Runderen"}
-                                    {invoice.invoice_flavour === 2 && "Wolvee"}
-                                    {invoice.invoice_flavour === 3 && "Vrije invoer"}
                                 </td>
                                 <td>
                                     <a href={`http://localhost:8000/invoices/pdf/${invoice.id}`}>Downloaden</a>

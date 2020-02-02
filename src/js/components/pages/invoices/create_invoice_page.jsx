@@ -44,7 +44,6 @@ const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
             <hr />
 
             <Form
-                // initialValues={initialValues}
                 onSubmit={onSubmit}
                 render={({ handleSubmit, form, values }) => {
                     return (
@@ -84,15 +83,13 @@ const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
                                         </select>
                                     )}
                                 />
-                            
-                            
                             </div>
                             <div className="form-group">
                                 <strong>Nota nummer</strong><br />
                                 <Field 
-                                    name="invoice_number" 
-                                    component="input" 
-                                    type="text" 
+                                    name="invoice_number"
+                                    component="input"
+                                    type="text"
                                     required
                                 />
                             </div>
@@ -105,15 +102,27 @@ const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
                                     ))}
                                 </Field>
                             </div>
-                            <div className="form-group">
-                                <strong>Factuur inhoud</strong><br />
-                                <Field name="invoice_flavour" component="select" defaultValue="0">
-                                    <option value={0}>Kalveren</option>
-                                    <option value={1}>Runderen</option>
-                                    <option value={2}>Wolvee</option>
-                                    <option value={3}>Vrije invoer</option>
-                                </Field>
-                            </div>
+                            {parseInt(values.invoice_type) === 0 &&
+                                <div className="form-group">
+                                    <strong>Factuur inhoud</strong><br />
+                                    <Field name="invoice_flavour" component="select" defaultValue="0">
+                                        <option value={0}>Kalveren</option>
+                                        <option value={1}>Runderen</option>
+                                        <option value={2}>Wolvee</option>
+                                        <option value={3}>Vrije invoer</option>
+                                    </Field>
+                                </div>
+                            }
+                            {parseInt(values.invoice_type) === 1 &&
+                                <div className="form-group">
+                                    <strong>Betreft</strong><br />
+                                    <Field 
+                                        name="regarding"
+                                        component="input"
+                                        type="text"
+                                    />
+                                </div>
+                            }
                             <div className="form-group">
                                 <strong>BTW percentage</strong><br />
                                 <Field name="btw_percentage" component="select" defaultValue="0">
@@ -123,23 +132,25 @@ const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
                                 </Field>
                             </div>
                             {parseInt(values.invoice_flavour) === 1 &&
-                            <div className="form-group">
-                                <strong>UBN nummer</strong><br />
-                                <Field 
-                                    name="ubn_number" 
-                                    component="input" 
-                                    type="text"
-                                />
-                            </div>
+                                <div className="form-group">
+                                    <strong>UBN nummer</strong><br />
+                                    <Field 
+                                        name="ubn_number" 
+                                        component="input" 
+                                        type="text"
+                                    />
+                                </div>
                             }
                             <div className="form-group">
                                 <strong>Inhoud</strong><br />
                                 <Field 
                                     name="invoice_rows"
                                     component={InvoiceRowsBuilder}
+                                    invoiceType={parseInt(values.invoice_type)}
                                     invoiceFlavour={parseInt(values.invoice_flavour)}
                                 />
                             </div>
+                            
                             <div className="form-group">
                                 <button type="submit">Opslaan</button>
                             </div>
@@ -147,7 +158,6 @@ const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
                     )
                 }}
             />
-
         </React.Fragment>
     )
 }
