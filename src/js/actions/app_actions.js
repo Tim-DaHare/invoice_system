@@ -13,7 +13,7 @@ export const createInvoice = values => async dispatch => {
         return false
     }
     
-    dispatch(updateCustomers)
+    dispatch(updateInvoices)
 }
 
 export const createCustomer = values => async dispatch => {
