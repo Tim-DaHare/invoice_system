@@ -6,8 +6,10 @@ const CustomersPage = ({ customers }) => {
 
     return (
         <>
-            <h1>Klanten</h1>
-
+            <div className="row justify-between items-center">
+                <h1>Klanten</h1>
+                <Link to="customers/create">Klant toevoegen</Link>
+            </div>
             <hr />
 
             {customers.length <= 0 &&

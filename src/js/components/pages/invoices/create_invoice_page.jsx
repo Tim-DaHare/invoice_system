@@ -5,7 +5,6 @@ import { createInvoice } from "../../../actions/app_actions"
 import { Form, Field } from "react-final-form"
 import InvoiceRowsBuilder from "../../fields/invoice-rows-builder"
 
-
 const CreateInvoicePage = ({ invoices, customers, createInvoice, history }) => {
     
     const onSubmit = async values => {

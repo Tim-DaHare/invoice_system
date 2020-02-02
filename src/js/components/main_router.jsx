@@ -5,8 +5,9 @@ import CustomersPage from "./pages/customers/customers_page"
 import InvoicesPage from "./pages/invoices/invoices_page"
 import CreateInvoicePage from "./pages/invoices/create_invoice_page"
 import EditInvoicePage from "./pages/invoices/edit_invoice_page"
+import CreateCustomerPage from "./pages/customers/create_customer_page"
 
-const  MainRouter = () => {
+const MainRouter = () => {
     return (
         <Router>
             <Header />
@@ -23,7 +24,10 @@ const  MainRouter = () => {
                     </Route>
                     <Route exact path="/customers">
                         <CustomersPage />
-                    </Route>           
+                    </Route>
+                    <Route exact path="/customers/create">
+                        <CreateCustomerPage />
+                    </Route>   
                 </Switch>
             </div>
         </Router>
