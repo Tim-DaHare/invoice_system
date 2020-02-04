@@ -9,6 +9,7 @@ const EditCustomerPage = ({ editCustomer, customers, match }) => {
     
     const onSubmit = async values => {
         await editCustomer(customer.id, values)
+        alert("Klant is gewijzigd")
         // history.replace("/customers")
     }
 
