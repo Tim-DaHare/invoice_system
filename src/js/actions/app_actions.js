@@ -13,11 +13,29 @@ export const createInvoice = values => async dispatch => {
         return false
     }
     
-    dispatch(updateInvoices)
+    dispatch(updateInvoices())
 }
 
 export const createCustomer = values => async dispatch => {
+    const result = await postRequest("/customers/new", values)
 
+    if (result.status !== "success") {
+        console.warn("creating customer failed")
+        return false
+    }
+
+    dispatch(updateCustomers())
+}
+
+export const editCustomer = (id, values) => async dispatch => {
+    const result = await postRequest(`/customers/${id}/edit`, values)
+
+    if (result.status !== "success") {
+        console.warn("editing customer failed")
+        return false
+    }
+
+    dispatch(updateCustomers())
 }
 
 export const updateInvoices = () => async dispatch => {

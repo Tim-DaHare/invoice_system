@@ -4,8 +4,10 @@ import Header from "./header"
 import CustomersPage from "./pages/customers/customers_page"
 import InvoicesPage from "./pages/invoices/invoices_page"
 import CreateInvoicePage from "./pages/invoices/create_invoice_page"
-import EditInvoicePage from "./pages/invoices/edit_invoice_page"
+// import EditInvoicePage from "./pages/invoices/edit_invoice_page"
 import CreateCustomerPage from "./pages/customers/create_customer_page"
+import EditCustomerPage from "./pages/customers/edit_customer_page"
+
 
 const MainRouter = () => {
     return (
@@ -13,21 +15,12 @@ const MainRouter = () => {
             <Header />
             <div className="page--container">
                 <Switch>
-                    <Route exact path="/">
-                        <InvoicesPage />
-                    </Route>
-                    <Route exact path="/invoices/create">
-                        <CreateInvoicePage />
-                    </Route>
-                    <Route exact path="/invoices/edit/:1">
-                        <EditInvoicePage />
-                    </Route>
-                    <Route exact path="/customers">
-                        <CustomersPage />
-                    </Route>
-                    <Route exact path="/customers/create">
-                        <CreateCustomerPage />
-                    </Route>   
+                    <Route exact path="/" component={InvoicesPage} />
+                    <Route exact path="/invoices/create" component={CreateInvoicePage} />
+                    {/* <Route exact path="/invoices/edit/:1" component={EditInvoicePage} /> */}
+                    <Route exact path="/customers" component={CustomersPage} />
+                    <Route exact path="/customers/create" component={CreateCustomerPage} />
+                    <Route exact path="/customers/edit/:id" component={EditCustomerPage} />
                 </Switch>
             </div>
         </Router>

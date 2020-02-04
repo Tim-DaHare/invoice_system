@@ -1,20 +1,21 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import { createCustomer } from "../../../actions/app_actions"
+import { editCustomer } from "../../../actions/app_actions"
 import { Form, Field } from "react-final-form"
 
-const CreateInvoicePage = ({ createCustomer, history }) => {
+const EditCustomerPage = ({ editCustomer, customers, match }) => {
+    const [customer] = useState(customers.find(customer => customer.id === parseInt(match.params.id)))
     
     const onSubmit = async values => {
-        await createCustomer(values)
-        history.replace("/customers")
+        await editCustomer(customer.id, values)
+        // history.replace("/customers")
     }
 
     return (
         <>
             <div className="row justify-between items-center">
-                <h1>Klant aanmaken</h1>
+                <h1>Klant wijzigen</h1>
                 <Link to="/customers">Terug naar overzicht</Link>
             </div>
             <hr />
@@ -30,6 +31,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="company_name"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.company_name}
                                     required
                                 />
                             </div>
@@ -39,6 +41,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="street"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.street}
                                 />
                             </div>
                             <div className="form-group">
@@ -47,6 +50,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="house_number"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.house_number}
                                 />
                             </div>
                             <div className="form-group">
@@ -55,6 +59,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="postal_code"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.postal_code}
                                 />
                             </div>
                             <div className="form-group">
@@ -63,6 +68,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="city"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.city}
                                 />
                             </div>
                             <div className="form-group">
@@ -71,6 +77,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="btw_number"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.btw_number}
                                 />
                             </div>
                             <div className="form-group">
@@ -79,6 +86,7 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
                                     name="email"
                                     component="input"
                                     type="text"
+                                    initialValue={customer.email}
                                 />
                             </div>
                             
@@ -93,8 +101,12 @@ const CreateInvoicePage = ({ createCustomer, history }) => {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    createCustomer: values => dispatch(createCustomer(values))
+const mapStateToProps = state => ({
+    customers: state.app.customers
 })
 
-export default connect(null, mapDispatchToProps)(CreateInvoicePage)
+const mapDispatchToProps = dispatch => ({
+    editCustomer: (id, values) => dispatch(editCustomer(id, values))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditCustomerPage)
