@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "main": "main.js",
+    "homepage": "./public",
     "dependencies": {
         "@reduxjs/toolkit": "^1.2.3",
         "@testing-library/jest-dom": "^4.2.4",
@@ -41,6 +42,7 @@
     },
     "devDependencies": {
         "electron": "^7.1.10",
+        "electron-builder": "^22.3.2",
         "sass": "^1.25.0"
     }
 }
